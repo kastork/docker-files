@@ -1,4 +1,4 @@
-FROM ruby:2.3-alpine
+FROM ruby:2.3.1-alpine
 
 ENV ASCIIDOCTOR_VERSION "1.5.4"
 
@@ -35,11 +35,13 @@ RUN gem install --no-ri --no-rdoc awestruct \
   && gem install --no-ri --no-rdoc compass \
   && gem install --no-ri --no-rdoc opal \
   && gem install --no-ri --no-rdoc asciidoctor \
+  && gem install --no-ri --no-rdoc slim \
   && gem install --no-ri --no-rdoc kramdown \
   && gem install --no-ri --no-rdoc htmlcompressor \
   && gem install --no-ri --no-rdoc uglifier \
   && gem install --no-ri --no-rdoc bootstrap-sass \
-  && gem install --no-ri --no-rdoc zurb-foundation
+  && gem install --no-ri --no-rdoc zurb-foundation \
+  && gem install --no-ri --no-rdoc semantic-ui-sass
 
 
 # RUN apk del make\
@@ -49,6 +51,7 @@ RUN gem install --no-ri --no-rdoc awestruct \
 RUN rm -rf /var/cache/apk/*
 
 EXPOSE 4242
+EXPOSE 63342
 
 WORKDIR /documents
 VOLUME /documents
